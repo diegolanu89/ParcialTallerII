@@ -1,0 +1,23 @@
+# Parcial - Estadísticas de Números
+
+Este proyecto fue desarrollado como parte del **Parcial del 28 de mayo** para la materia **Taller de Programación II**. Consiste en una aplicación que permite almacenar y analizar una lista de números ingresados por el usuario a través de una interfaz web conectada a un servidor Express con persistencia en memoria.
+
+## Funcionalidades
+
+- ✅ Agregar un número nuevo
+- 📋 Ver todos los números almacenados
+- 📊 Calcular el promedio de todos los números
+- ⬆️⬇️ Ver el mínimo y el máximo valor
+- 🔢 Consultar la cantidad total de números almacenados
+
+## ecnologías utilizadas
+
+- **Frontend:** HTML, CSS, JavaScript (Vanilla)
+- **Backend:** Node.js, Express.js (estructura MVC)
+- **Persistencia:** Memoria (array interno)
+- **Herramientas:** Postman para pruebas de endpoints
+
+## 📁 DATOS DEL ALUMNO
+
+DIEGO PEYRANO
+

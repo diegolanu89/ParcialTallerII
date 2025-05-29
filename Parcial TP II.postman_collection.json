@@ -1,0 +1,130 @@
+{
+	"info": {
+		"_postman_id": "4a8478c1-fa35-4cb3-869a-034fefd0f6e8",
+		"name": "Parcial TP II",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8566027"
+	},
+	"item": [
+		{
+			"name": "Agregar Numero",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"numero\": 12\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/numeros/entrada",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"numeros",
+						"entrada"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get Numeros",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/numeros/entrada",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"numeros",
+						"entrada"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Promedio",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/numeros/promedio",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"numeros",
+						"promedio"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MinMax",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/numeros/minmax",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"numeros",
+						"minmax"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cantidad",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/numeros/cantidad",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"numeros",
+						"cantidad"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
