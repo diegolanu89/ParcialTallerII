@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estadísticas de Números</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f3f4f6;
+      padding: 2rem;
+      color: #333;
+    }
+    h1 {
+      color: #1f2937;
+    }
+    .card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      margin: 0.3rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #3b82f6;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #2563eb;
+    }
+    #resultados {
+      margin-top: 1rem;
+    }
+    input[type="number"] {
+      padding: 0.5rem;
+      margin-right: 0.5rem;
+      font-size: 1rem;
+      width: 100px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Estadísticas de Números</h1>
+
+  <div class="card">
+    <h2>Agregar número</h2>
+    <input type="number" id="numero" placeholder="Ej: 42">
+    <button onclick="agregarNumero()">Agregar</button>
+  </div>
+
+  <div class="card">
+    <button onclick="ejecutarServicio('api/numeros/entrada')">Ver todos los números</button>
+    <button onclick="ejecutarServicio('api/numeros/promedio')">Ver promedio</button>
+    <button onclick="ejecutarServicio('api/numeros/minmax')">Ver mínimo y máximo</button>
+    <button onclick="ejecutarServicio('api/numeros/cantidad')">Ver cantidad</button>
+  </div>
+
+  <div class="card" id="resultados">
+    <h2>Resultados:</h2>
+    <pre id="salida">(Aquí aparecerán los datos)</pre>
+  </div>
+
+  <script>
+    async function ejecutarServicio(endpoint) {
+      try {
+        const res = await fetch(`/${endpoint}`);
+        if (!res.ok) throw new Error('Error en la consulta');
+        const data = await res.json();
+        document.getElementById('salida').textContent = JSON.stringify(data, null, 2);
+      } catch (error) {
+        document.getElementById('salida').textContent = 'Error: ' + error.message;
+      }
+    }
+
+    async function agregarNumero() {
+      const valor = document.getElementById('numero').value;
+      if (!valor) return alert("Ingresá un número válido");
+
+      try {
+        const res = await fetch('/api/numeros/entrada', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ numero: Number(valor) })
+        });
+
+        if (!res.ok) throw new Error('Error al guardar el número');
+
+        const data = await res.json();
+        document.getElementById('salida').textContent = JSON.stringify(data, null, 2);
+        document.getElementById('numero').value = '';
+
+        // Actualizar automáticamente la lista de números
+        ejecutarServicio('api/numeros/entrada');
+
+      } catch (error) {
+        document.getElementById('salida').textContent = 'Error: ' + error.message;
+      }
+    }
+  </script>
+</body>
+</html>
